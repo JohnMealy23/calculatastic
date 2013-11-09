@@ -1,0 +1,82 @@
+@import "elements.less";
+@font_color: #222222;
+@calc_button_height: 50px;
+@button_font_size: 20px;
+
+.rounded-corners (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.container{
+  color: @font_color;
+}
+
+.calculator_body{
+  background: #ffffff;
+  border: solid 1px #E6E6E6;
+  width: 100%;
+  .rounded-corners(22px);
+  .shadows_up;
+  padding: 20px 0 30px;
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.1), inset -5px -4px 19px -1px rgba(0, 0, 0, 0.2);
+}
+
+#calc_display{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .rounded-corners;
+  background:#f7f7f9;
+  padding: 5px;
+  text-align: right;
+  font-size: @button_font_size + 10px;
+  .shadows_down;
+}
+
+.calc_button{
+  color: #000000;
+  background:#999999;
+  .rounded-corners;
+  text-align: center;
+  font-size: @button_font_size;
+  .shadows_up;
+  margin: 5px -10px;
+  padding: 15px 0px;
+}
+
+.alt_button{
+  .calc_button;
+}
+
+.deactivated{
+  .calc_button;
+  background-color: #333333;
+}
+
+.rowSpan{
+  padding-bottom: -45px;
+}
+
+.number_button{
+  background: #C0C0C0;
+}
+
+.shadows_up{
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2), inset -2px -2px 2px 0px rgba(0, 0, 0, 0.2);  
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2), inset -2px -2px 2px 0px rgba(0, 0, 0, 0.2);  
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2), inset -2px -2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.shadows_down{
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+footer{
+  border-top: 1px solid #eee;
+  margin: 20px 0 40px;
+}
