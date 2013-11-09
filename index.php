@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Calculator</title>
+        <title>Calculatastic</title>
         <meta name="description" content="A calculator built using Less and Bootstrap">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +29,7 @@
 	<header class="page-header">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-				<h1>The Amazing Calculator</h1>
+				<h1>Calculatastic</h1>
 				<h2>Built by use of Less.css, Twitter Bootstrap and Object Oriented JavaScript.</h2>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 			<div class="col-md-4">
 				<h3>Note that this text jumps above the right when the screen shrinks to mobile proportions.  
 					This, and the calculator button layout are products of Bootstrap.</h3>
-				<h3>By viewing the source on GitHub</h3>
+				<h3>Please feel free to check out the source on <a href="https://github.com/JohnMealy23/calculatastic.git">Github</a>.</h3>
 				
 			</div>
 			
@@ -223,7 +223,7 @@
 	<footer>
 		<div class="row">
 			<div class="col-md-8 col-xl-6 col-md-offset-1">
-				<h3>Thank you for your consideration.</h3>
+				<h3>Thank you for your time.</h3>
 			</div>
 		</div>
 	</footer>
@@ -414,5 +414,3 @@
         </script>
     </body>
 </html>
-
-var runningTotal = thisEquation.runningTotal(parseFloat(thisEquation.lastNumber.value), thisEquation.currentNumber.compiledValue, thisEquation.lastNumber.operator);
