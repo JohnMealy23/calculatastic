@@ -38,7 +38,9 @@
 		<div class="row">
 			<!--Left Div-->
 			<div class="col-md-4">
-				<p>First column</p>
+				<h3>Note that this text jumps above the right when the screen shrinks to mobile proportions.  
+					This, and the calculator button layout are products of Bootstrap.</h3>
+				<h3>By viewing the source on GitHub</h3>
 				
 			</div>
 			
@@ -246,6 +248,7 @@
             var counter = 1;
             
             function equation() {
+            	this.startOver = false;
 				this.currentNumber = 0;
 				this.currentNumberArray = Array();
 				this.lastNumber = null;
@@ -303,12 +306,17 @@
 							var result= Math.sqrt(thisEquation.currentNumber);
 							return result;	
 						case 'equals':
+							thisEquation.lastOperator = thisEquation.currentOperator;
+							console.log("thisEquation.runningTotal: " + thisEquation.runningTotal);
+							console.log("thisEquation.lastOperator: " + thisEquation.lastOperator);
+							console.log("thisEquation.currentNumber: " + thisEquation.currentNumber);
 		        			thisEquation.runningTotal = thisEquation.doTheMath(thisEquation.runningTotal, thisEquation.currentNumber, thisEquation.lastOperator);
-		        			$('#calc_display').html(thisEquation.runningTotal);	
-							thisEquation = new equation();
+		        			console.log("thisEquation.runningTotal: " + thisEquation.runningTotal);
+		        			thisEquation.startOver = true;
+		        			return thisEquation.runningTotal;
 						case 'C':
-							$('#calc_display').html(0);	
 							thisEquation = new equation();
+							return 0;
  					};
  				};
             };
@@ -325,6 +333,7 @@
 	            thisEquation.currentNumberArray[thisEquation.column] = thisEquation.currentNumber;
 	            
 	            $('#calc_display').html(thisEquation.currentNumber);
+	            
 	        });
 	        
             
@@ -340,6 +349,15 @@
 	        	var stateChanger = thisEquation.stateChanger($(this).attr('alt'));
 	        	
 	        	if(isNumber) {
+	        		
+	        		
+	        		
+	        		
+	        		//if(thisEquation.startOver){thisEquation.adjustValue("C")};
+	        		
+	        		
+	        		
+	        		
 	        		//Acquire a new number:
 	        		console.log("A digit was pressed. It's value is '" + buttonValue + "'.");
 	        		console.log("currentNumber to String: " + thisEquation.currentNumber.toString());
