@@ -53,51 +53,19 @@
 							0
 						</div>
 					</div>
-				
-				<!--
-					<div class="row">
-						<div class="col-xs-2 col-xs-offset-1">
-							<div class="calc_button" id="MC">
-								MC
-							</div>
-						</div>	
-						<div class="col-xs-2">
-							<div class="calc_button" id="MC">
-								MC
-							</div>	
-						</div>
-						<div class="col-xs-2">
-							<div class="calc_button" id="MC">
-								MC
-							</div>
-						</div>
-						<div class="col-xs-2">
-							<div class="calc_button" id="MC">
-								MC
-							</div>
-						</div>
-						<div class="col-xs-2">
-							<div class="calc_button" id="MC">
-								MC
-							</div>
-						</div>
-					</div>
-				-->
 									
 					<div class="row">
 						<div class="col-xs-3 col-xs-offset-1">
 							<div class="alt_button" id="backspace">
 								<strong>&larr;</strong>
 							</div>
-						</div>	
-						<!--
-						<div class="col-xs-2">
+						</div>
+						<div class="col-xs-3">
 							<div class="alt_button" id="CE">
 								CE
 							</div>	
 						</div>
-						-->
-						<div class="col-xs-3">
+						<div class="col-xs-2">
 							<div class="alt_button" id="C">
 								C
 							</div>
@@ -105,11 +73,6 @@
 						<div class="col-xs-2">
 							<div class="alt_button" id="pos_neg">
 								-/+
-							</div>
-						</div>
-						<div class="col-xs-2">
-							<div class="alt_button" id="SqRt">
-								&radic;
 							</div>
 						</div>
 					</div>	
@@ -136,10 +99,10 @@
 							</div>
 						</div>
 						<div class="col-xs-2">
-							<div class="alt_button" id="percentage">
-								%
+							<div class="alt_button" id="SqRt">
+								&radic;
 							</div>
-						</div>
+						</div>						
 					</div>
 										
 					<div class="row">
@@ -164,8 +127,8 @@
 							</div>
 						</div>
 						<div class="col-xs-2">
-							<div class="alt_button" id="fraction">
-								1/*
+							<div class="alt_button" id="percentage">
+								%
 							</div>
 						</div>
 					</div>
@@ -192,8 +155,8 @@
 							</div>
 						</div>
 						<div class="col-xs-2">
-							<div class="calc_button rowSpan" id="equals">
-								=
+							<div class="alt_button" id="fraction">
+								1/*
 							</div>
 						</div>
 					</div>
@@ -214,6 +177,16 @@
 								+
 							</div>
 						</div>
+						<div class="col-xs-2">
+							<div class="calc_button rowSpan" id="equals">
+								=
+							</div>
+						</div>						
+						<!-- <div class="col-xs-1">
+							<div class="tester deactivated" id="plus">
+								Test
+							</div>
+						</div> -->
 					</div>
 					
 				</div>
