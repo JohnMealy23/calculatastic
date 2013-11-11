@@ -86,7 +86,7 @@
 									
 					<div class="row">
 						<div class="col-xs-3 col-xs-offset-1">
-							<div class="deactivated" id="backspace">
+							<div class="alt_button" id="backspace">
 								<strong>&larr;</strong>
 							</div>
 						</div>	
@@ -192,7 +192,7 @@
 							</div>
 						</div>
 						<div class="col-xs-2">
-							<div class="alt_button rowSpan" id="equals">
+							<div class="calc_button rowSpan" id="equals">
 								=
 							</div>
 						</div>
@@ -245,171 +245,7 @@
         
         
         <script>
-            var counter = 1;
-            
-            function equation() {
-            	this.startOver = false;
-				this.currentNumber = 0;
-				this.currentNumberArray = Array();
-				this.lastNumber = null;
-				this.currentOperator = null;
-				this.lastOperator = null;
-				this.column = 0;
-				this.runningTotal = 0;
-				this.type = null; 
-				this.isNumber = function(id) {
-	        		if (!isNaN(id) || id == '.') {
-	        			return true;
-	        		} else {
-	        			return false;
-	        		};
-	        	};
-	        	this.stateChanger = function(alt){ 
-	        		if (alt == 'stateChanger'){
-	        			return true;
-	        		} else {
-	        			return false;
-	        		}
-	        	};   
-	        	this.doTheMath = function(lastValue, currentValue, operator){
-					switch (operator) {
-						case 'divide':
-							var result= lastValue/currentValue;
-							return result;							
-						case 'multiply':
-							var result= lastValue * currentValue;
-							return result;							
-						case 'minus':
-							var result= lastValue - currentValue;
-							return result;							
-						case 'plus':
-							var result = lastValue + currentValue;
-							return result;							
-					};
-				};
-				this.adjustValue = function(id) {
-					switch(id){
-						case 'percentage':
-							if(thisEquation.currentNumber == 0){
-								return 0;
-							} else {
-								var perc= thisEquation.currentNumber * (thisEquation.currentNumber/100);
-								return perc;
-							};							
-						case 'fraction':											
-							var result= 1/thisEquation.currentNumber;
-							return result;							
-						case 'pos_neg':
-							result = thisEquation.currentNumber * -1; 
-							return result;							
-						case 'SqRt':
-							var result= Math.sqrt(thisEquation.currentNumber);
-							return result;	
-						case 'equals':
-							thisEquation.lastOperator = thisEquation.currentOperator;
-							console.log("thisEquation.runningTotal: " + thisEquation.runningTotal);
-							console.log("thisEquation.lastOperator: " + thisEquation.lastOperator);
-							console.log("thisEquation.currentNumber: " + thisEquation.currentNumber);
-		        			thisEquation.runningTotal = thisEquation.doTheMath(thisEquation.runningTotal, thisEquation.currentNumber, thisEquation.lastOperator);
-		        			console.log("thisEquation.runningTotal: " + thisEquation.runningTotal);
-		        			thisEquation.startOver = true;
-		        			return thisEquation.runningTotal;
-						case 'C':
-							thisEquation = new equation();
-							return 0;
- 					};
- 				};
-            };
-                        
-            var thisEquation = new equation();
-            
-            $(document).on( 'mousedown', '.alt_button', function () {
-	            $(this).addClass( "shadows_down" );
-	            var buttonValue = $(this).attr('id');
-	            
-	            thisEquation.currentNumber = thisEquation.adjustValue(buttonValue);
-	            thisEquation.currentNumberArray = new Array();
-	            thisEquation.column = 1;
-	            thisEquation.currentNumberArray[thisEquation.column] = thisEquation.currentNumber;
-	            
-	            $('#calc_display').html(thisEquation.currentNumber);
-	            
-	        });
-	        
-            
-             //On Mousedown 
-            $(document).on( 'mousedown', '.calc_button', function () {
-	            $(this).addClass( "shadows_down" );
-	        	
-	        	var buttonValue = $(this).attr('id');
-	        	if (buttonValue == 'decimal'){buttonValue = '.'};
-	        
-	        	thisEquation.type = buttonValue;
-	        	var isNumber = thisEquation.isNumber(buttonValue);
-	        	var stateChanger = thisEquation.stateChanger($(this).attr('alt'));
-	        	
-	        	if(isNumber) {
-	        		
-	        		
-	        		
-	        		
-	        		//if(thisEquation.startOver){thisEquation.adjustValue("C")};
-	        		
-	        		
-	        		
-	        		
-	        		//Acquire a new number:
-	        		console.log("A digit was pressed. It's value is '" + buttonValue + "'.");
-	        		console.log("currentNumber to String: " + thisEquation.currentNumber.toString());
-	        		console.log(".? " + thisEquation.currentNumber.toString().search(/\./));
-	        		if(buttonValue == '.' && thisEquation.currentNumber.toString().search(/\./) == -1){
-	        			thisEquation.currentNumberArray[thisEquation.column] = buttonValue;
-	        			thisEquation.column++;
-	        		} else if(thisEquation.currentNumber == 0 && thisEquation.column == 0 && buttonValue != 0 && buttonValue != '.') {
-	        			console.log("This is the first digit to be pressed. It'll be inserted into the currentNumber.")
-	        			thisEquation.currentNumberArray[thisEquation.column] = buttonValue;
-	        			thisEquation.currentNumber = parseFloat(buttonValue);
-	        			thisEquation.column++;
-	        			console.log("column number: " + thisEquation.column);
-	        		} else if(thisEquation.column != 0 && buttonValue != '.') {
-	        			thisEquation.currentNumberArray[thisEquation.column] = buttonValue;
-	        			thisEquation.currentNumber = parseFloat(thisEquation.currentNumberArray.toString().replace(/,/g, ''));
-	        			thisEquation.column++;
-	        			console.log("column number: " + thisEquation.column);
-	        			console.log("This is not the first digit to be pressed.  It will be added to the current number, to create: " + thisEquation.currentNumber + ".");
-	        		};
-	        		$('#calc_display').html(thisEquation.currentNumber);
-	        		
-	        	} else {
-	        		//Apply the new number to the existing value:
-	        		console.log("An operator was pressed. It's value is " + buttonValue + ".");
-	        		thisEquation.lastOperator = thisEquation.currentOperator;
-	        		
-	        		if (thisEquation.currentOperator == null) {
-	        		console.log("No operators have been entered previously. " + buttonValue + " is the first operator.")
-	        			console.log("No previous operator existed. " + buttonValue + " is being entered now.");
-	        			thisEquation.currentOperator = buttonValue;
-	        			thisEquation.runningTotal = thisEquation.currentNumber;
-	        			
-	        		} else if(thisEquation.lastOperator != null) {
-	        			
-	        			thisEquation.currentOperator = buttonValue;
-	        			thisEquation.runningTotal = thisEquation.doTheMath(thisEquation.runningTotal, thisEquation.currentNumber, thisEquation.lastOperator);
-	        			$('#calc_display').html(thisEquation.runningTotal);	
-	        		}
-	        		
-	        		thisEquation.currentNumberArray = new Array;
-	        		thisEquation.currentNumber = 0;
-	        		thisEquation.column = 0;
-	        			        		
-	        		
-	        	}
-	        });
-            
-            //On Mouseup
-            $(document).on( 'mouseup mouseout', '.calc_button, .alt_button', function () {
-            	$(this).removeClass( "shadows_down" );
-            });        	
+   	
 
         </script>
     </body>
